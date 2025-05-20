@@ -45,7 +45,7 @@ Given an array $a = [a_1, a_2, \dots, a_n]$, define:
   - A line containing an integer $n$ — the size of the array.  
     $1 \le n \le 5 \times 10^6$
   - A line with $n$ space-separated integers $a_1, a_2, \dots, a_n$  
-    $1 \le a_i \le 10^{18}$
+    $0 \le a_i \le 10^{18}$
 
 The sum of $n$ across all test cases does not exceed $5 \times 10^6$.
 
