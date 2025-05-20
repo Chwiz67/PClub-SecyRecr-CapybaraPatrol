@@ -23,13 +23,13 @@ $$
 f^{(\ell)}(x) = f^{(\ell+1)}(x)
 $$
 
-Given an array $a = [a_1, a_2, \dots, a_n]$, define:
+Given arrays $a = [a_1, a_2, \dots, a_n]$ and $p = [p_1, p_2, \dots, p_n]$, define:
 
 - **Strength** of the array:  
-  $S = \max(s(a_1), s(a_2), \dots, s(a_n))$
+  $S = \max(s(a_1^{p_1}), s(a_2^{p_2}), \dots, s(a_n^{p_n}))$
   
 - **Beauty** of the array:  
-  $b = \sum_{i=1}^{n} f^{(S)}(a_i)$
+  $b = \sum_{i=1}^{n} f^{(S)}(a_i^{p_i})$
 
 - **Cuteness** of the array:  
   Let $L = s(b)$, then the **cuteness** is $f^{(L)}(b)$.
@@ -42,12 +42,14 @@ Given an array $a = [a_1, a_2, \dots, a_n]$, define:
   $1 \le t \le 10^4$
 
 - Each test case contains:
-  - A line containing an integer $n$ — the size of the array.  
-    $1 \le n \le 5 \times 10^6$
+  - A line containing an integer $n$ — the size of the array.
+    $1 \le n \le 2 \times 10^5$
   - A line with $n$ space-separated integers $a_1, a_2, \dots, a_n$  
     $0 \le a_i \le 10^{18}$
+  - A line with $n$ space-separated integers $p_1, p_2, \dots, p_n$  
+    $0 \le p_i \le 10^{18}$
 
-The sum of $n$ across all test cases does not exceed $5 \times 10^6$.
+The sum of $n$ across all test cases does not exceed $2 \times 10^5$.
 
 ---
 
