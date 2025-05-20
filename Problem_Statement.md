@@ -34,6 +34,8 @@ Given arrays $a = [a_1, a_2, \dots, a_n]$ and $p = [p_1, p_2, \dots, p_n]$, defi
 - **Cuteness** of the array:  
   Let $L = s(b)$, then the **cuteness** is $f^{(L)}(b)$.
 
+**Note**: $0^0 = 1$
+
 ---
 
 ### Input
