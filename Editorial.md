@@ -1,21 +1,3 @@
-## Brute Force Approach
-
-Brute forcing any number $a_i$ by summing its digits repeatedly has a time complexity of  
-
-$$
-\mathcal{O}(\log a_i)
-$$  
-
-Hence, the total time complexity is: 
-
-$$
-\mathcal{O}(n \log a_i)
-$$
-
-which is **too slow** for $n \leq 5 \times 10^6$ and $a_i \leq 10^{18}$.
-
----
-
 ## Observations
 
 Let $f(x)$ be the **sum of digits** of $x$.  
@@ -46,7 +28,7 @@ Thus, $x$ must be a 1-digit number.
 
 If $f^\ell(x) = f^{\ell+1}(x)$, then $f^\ell(x)$ must be a 1-digit number.  
 Hence for any $k \geq 0$, $f^{\ell+k}(x) = f^\ell(x)$  
-So, $f^S(a_i)$ is equivalent to applying $f$ repeatedly until the result is a **single-digit number**.
+So, $f^S(a_i^{p_i})$ is equivalent to applying $f$ repeatedly until the result is a **single-digit number**.
 
 ---
 
@@ -55,10 +37,10 @@ So, $f^S(a_i)$ is equivalent to applying $f$ repeatedly until the result is a **
 Let $F(x)$ be the **digit root** of $x$, i.e., the final 1-digit result after repeatedly summing digits.  
 
 Then the **beauty** of the array is:  
-$b = \sum_{i=1}^{n} F(a_i)$
+$b = \sum_{i=1}^{n} F(a_i^{p_i})$
 
 And the **cuteness** of the array is:  
-$F(b) = F\left(\sum_{i=1}^{n} F(a_i)\right)$
+$F(b) = F\left(\sum_{i=1}^{n} F(a_i^{p_i})\right)$
 
 ---
 
@@ -86,22 +68,23 @@ $F(9a + b) = F(x) = F(b)$ (if $b \ne 0$), or $9$.
 
 ## Claim 3:
 
-$F\left(\sum_{i=1}^{n} F(a_i)\right) = F\left(\sum_{i=1}^{n} a_i\right)$
+$F\left(\sum_{i=1}^{n} F(a_i^{p_i})\right) = F\left(\sum_{i=1}^{n} a_i^{p_i} \bmod 9 \right)$
 
 #### Proof:
 
-Using the identity:  
-$F(F(a) + F(b)) = F(a \bmod 9 + b \bmod 9) = (a \bmod 9 + b \bmod 9) \bmod 9 = (a + b) \bmod 9 = F(a + b)$  
+$F(F(a) + F(b)) = F(a \bmod 9 + b \bmod 9) = (a \bmod 9 + b \bmod 9) \bmod 9 = (a + b) \bmod 9 = ((a + b) \bmod 9) \bmod 9 = F((a + b) \bmod 9)$  
 Note: `mod` here is mapped 1–9.   
-Thus $F(F(a) + F(b)) = F(a + b)$  
+Thus $F(F(a) + F(b)) = F((a + b) \bmod 9)$  
 By induction, this generalizes to all $n$, so:  
-$F\left(\sum_{i=1}^{n} F(a_i)\right) = F\left(\sum_{i=1}^{n} a_i\right)$
+$F\left(\sum_{i=1}^{n} F(a_i^{p_i})\right) = F\left(\sum_{i=1}^{n} a_i^{p_i} \bmod 9 \right)$
 
 ---
+
+$a_i^{p_i} \bmod 9$ can be calculated by binary exponentiation.
 
 This gives a final time complexity of 
 
 $$
-\mathcal{O}(n)
+\mathcal{O}(n log p_{max})
 $$  
 
